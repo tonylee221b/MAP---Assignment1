@@ -53,13 +53,13 @@ public class Calculator {
                         case "%":
                             res = Integer.parseInt(idx0) % Integer.parseInt((idx2));
                             break;
-                        case "pow":
+                        case "POW":
                             res = (int)Math.pow(Integer.parseInt(idx0), Integer.parseInt((idx2)));
                             break;
-                        case "Max":
+                        case "MAX":
                             res = Math.max(Integer.parseInt(idx0), Integer.parseInt(idx2));
                             break;
-                        case "Min":
+                        case "MIN":
                             res = Math.min(Integer.parseInt(idx0), Integer.parseInt(idx2));
                             break;
                     }
@@ -88,13 +88,13 @@ public class Calculator {
                         case "%":
                             res %= Integer.parseInt((idx1));
                             break;
-                        case "pow":
+                        case "POW":
                             res = (int)Math.pow(res, Integer.parseInt((idx1)));
                             break;
-                        case "Max":
+                        case "MAX":
                             res = Math.max(res, Integer.parseInt(idx1));
                             break;
-                        case "Min":
+                        case "MIN":
                             res = Math.min(res, Integer.parseInt(idx1));
                             break;
                     }

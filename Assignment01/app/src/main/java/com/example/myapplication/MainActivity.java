@@ -106,7 +106,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View view) {
-        int id = view.getId();
+        String title = ((Button)view).getText().toString();
         int res = 0;
 
         if (resStr != "") {
@@ -114,50 +114,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             resStr = "";
         }
 
-        switch (id) {
-            case R.id.btn_0:
-                cal.push("0");
-                break;
-            case R.id.btn_1:
-                cal.push("1");
-                break;
-            case R.id.btn_2:
-                cal.push("2");
-                break;
-            case R.id.btn_3:
-                cal.push("3");
-                break;
-            case R.id.btn_4:
-                cal.push("4");
-                break;
-            case R.id.btn_5:
-                cal.push("5");
-                break;
-            case R.id.btn_6:
-                cal.push("6");
-                break;
-            case R.id.btn_7:
-                cal.push("7");
-                break;
-            case R.id.btn_8:
-                cal.push("8");
-                break;
-            case R.id.btn_9:
-                cal.push("9");
-                break;
-            case R.id.btn_plus:
-                cal.push("+");
-                break;
-            case R.id.btn_minus:
-                cal.push("-");
-                break;
-            case R.id.btn_divide:
-                cal.push("/");
-                break;
-            case R.id.btn_multi:
-                cal.push("*");
-                break;
-            case R.id.btn_eql:
+        switch (title) {
+            case "=":
                 resStr = cal.print();
                 res = cal.calculate();
                 if (res == -9999) {
@@ -168,30 +126,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
                 cal.push(resStr);
                 break;
-            case R.id.btn_clear:
+            case "C":
                 cal.clear();
                 break;
-
-            case R.id.btn_mod:
-                cal.push("%");
+            case "STANDARD":
+                btnMode.setText("ADVANCE - SCIENTIFIC");
+                advOperators.setVisibility(View.INVISIBLE);
                 break;
-            case R.id.btn_pow:
-                cal.push("pow");
+            case "ADVANCE - SCIENTIFIC":
+                btnMode.setText("STANDARD");
+                advOperators.setVisibility(View.VISIBLE);
                 break;
-            case R.id.btn_max:
-                cal.push("Max");
-                break;
-            case R.id.btn_min:
-                cal.push("Min");
-                break;
-            case R.id.btn_mode:
-                if (btnMode.getText() == "STANDARD") {
-                    btnMode.setText("ADVANCE - SCIENTIFIC");
-                    advOperators.setVisibility(View.INVISIBLE);
-                } else {
-                    btnMode.setText("STANDARD");
-                    advOperators.setVisibility(View.VISIBLE);
-                }
+            default:
+                cal.push(title);
                 break;
         }
 
